@@ -28,8 +28,8 @@
       --card-max-w: 430px;
       --card-pad-x: 1.4rem;
       --card-pad-y: 1.75rem;
-      --logo-size: 96px;
-      --logo-wrap: 130px;
+      --logo-size: 64px;
+      --logo-wrap: 80px;
       --h1-size: 1.45rem;
       --sub-size: .82rem;
       --input-size: .92rem;
@@ -120,8 +120,8 @@
     /* Outer glow ring */
     .logo-wrap::before {
       content: ''; position: absolute;
-      width: calc(var(--logo-wrap) + 36px);
-      height: calc(var(--logo-wrap) + 36px);
+      width: calc(var(--logo-wrap) + 24px);
+      height: calc(var(--logo-wrap) + 24px);
       border-radius: 50%;
       background: radial-gradient(circle, rgba(74,124,255,.15), rgba(139,92,246,.08) 50%, transparent 70%);
       animation: pulse 4s ease-in-out infinite;
@@ -130,8 +130,8 @@
     /* Inner ring border */
     .logo-wrap::after {
       content: ''; position: absolute;
-      width: calc(var(--logo-wrap) + 8px);
-      height: calc(var(--logo-wrap) + 8px);
+      width: calc(var(--logo-wrap) + 6px);
+      height: calc(var(--logo-wrap) + 6px);
       border-radius: 50%;
       border: 1.5px solid rgba(74,124,255,.15);
       animation: pulse 4s ease-in-out infinite;
@@ -405,7 +405,7 @@
     @media (max-width: 360px) {
       :root {
         --card-max-w: 100%; --card-pad-x: .9rem; --card-pad-y: 1.2rem;
-        --logo-size: 72px; --logo-wrap: 92px; --h1-size: 1.05rem; --sub-size: .68rem;
+        --logo-size: 48px; --logo-wrap: 62px; --h1-size: 1.05rem; --sub-size: .68rem;
         --input-size: .85rem; --btn-size: .82rem; --result-icon: 58px; --result-name: 1.05rem;
       }
       .wrapper { padding: 1rem .5rem; }
@@ -415,20 +415,20 @@
     }
 
     @media (min-width: 361px) and (max-width: 480px) {
-      :root { --card-max-w: 100%; --card-pad-x: 1.15rem; --card-pad-y: 1.4rem; --logo-size: 84px; --logo-wrap: 104px; --h1-size: 1.2rem; --sub-size: .74rem; }
+      :root { --card-max-w: 100%; --card-pad-x: 1.15rem; --card-pad-y: 1.4rem; --logo-size: 56px; --logo-wrap: 70px; --h1-size: 1.2rem; --sub-size: .74rem; }
       .wrapper { padding: 1.2rem .65rem; }
       .cd-unit { min-width: 56px; }
       .cd-unit .n { font-size: 1.35rem; }
     }
 
     @media (min-width: 481px) and (max-width: 640px) {
-      :root { --card-max-w: 440px; --card-pad-x: 1.4rem; --card-pad-y: 1.75rem; --logo-size: 92px; --logo-wrap: 115px; }
+      :root { --card-max-w: 440px; --card-pad-x: 1.4rem; --card-pad-y: 1.75rem; --logo-size: 64px; --logo-wrap: 80px; }
     }
 
     @media (min-width: 641px) and (max-width: 1024px) {
       :root {
         --card-max-w: 480px; --card-pad-x: 1.75rem; --card-pad-y: 2rem;
-        --logo-size: 105px; --logo-wrap: 130px; --h1-size: 1.6rem; --sub-size: .88rem;
+        --logo-size: 72px; --logo-wrap: 90px; --h1-size: 1.6rem; --sub-size: .88rem;
         --input-size: .95rem; --btn-size: .9rem; --result-icon: 74px; --result-name: 1.3rem;
       }
       .wrapper { padding: 2.5rem 1.5rem; }
@@ -440,7 +440,7 @@
     @media (min-width: 1025px) {
       :root {
         --card-max-w: 520px; --card-pad-x: 2.25rem; --card-pad-y: 2.5rem;
-        --logo-size: 110px; --logo-wrap: 140px; --h1-size: 1.75rem; --sub-size: .9rem;
+        --logo-size: 78px; --logo-wrap: 96px; --h1-size: 1.75rem; --sub-size: .9rem;
         --input-size: 1rem; --btn-size: .92rem; --radius: 22px; --result-icon: 78px; --result-name: 1.4rem;
       }
       .wrapper { padding: 3rem 2rem; }
@@ -455,14 +455,14 @@
     }
 
     @media (min-width: 1440px) {
-      :root { --card-max-w: 560px; --card-pad-x: 2.5rem; --card-pad-y: 2.75rem; --logo-size: 120px; --logo-wrap: 150px; --h1-size: 1.85rem; }
+      :root { --card-max-w: 560px; --card-pad-x: 2.5rem; --card-pad-y: 2.75rem; --logo-size: 84px; --logo-wrap: 104px; --h1-size: 1.85rem; }
     }
 
     @media (max-height: 500px) and (orientation: landscape) {
       .wrapper { padding: 1rem; justify-content: flex-start; }
       .header { margin-bottom: .8rem; }
-      .logo-wrap { width: 80px; height: 80px; }
-      .logo { width: 64px; height: 64px; }
+      .logo-wrap { width: 58px; height: 58px; }
+      .logo { width: 46px; height: 46px; }
       .header h1 { font-size: 1.1rem; }
       .card { padding: 1rem; }
     }
