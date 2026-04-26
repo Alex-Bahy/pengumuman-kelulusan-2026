@@ -107,6 +107,7 @@
       text-align: center;
       margin-bottom: 1.6rem;
       animation: fadeUp .7s ease-out both;
+      overflow: visible;
     }
 
     /* ── LOGO — Fixed: No Clipping ── */
@@ -115,6 +116,7 @@
       display: inline-flex; align-items: center; justify-content: center;
       width: var(--logo-wrap); height: var(--logo-wrap);
       margin-bottom: .7rem;
+      overflow: visible;
     }
 
     /* Outer glow ring */
@@ -148,12 +150,12 @@
       width: var(--logo-size);
       height: var(--logo-size);
       object-fit: contain;
-      /* KEY FIX: prevent any clipping with padding inside the container */
-      border-radius: 50%;
-      filter: drop-shadow(0 0 20px rgba(74,124,255,.25));
-      /* Ensure the image is never clipped */
+      object-position: center;
+      border-radius: 0;
+      filter: drop-shadow(0 0 16px rgba(74,124,255,.2));
       overflow: visible;
       flex-shrink: 0;
+      max-width: 100%;
     }
 
     .header h1 {
@@ -487,7 +489,7 @@
   <div class="wrapper">
     <header class="header">
       <div class="logo-wrap">
-        <img src="https://iili.io/Bgdt9te.md.png" alt="Logo SMK Negeri 1 Maluku Tengah" class="logo" />
+        <img src="https://iili.io/Bgdt9te.png" alt="Logo SMK Negeri 1 Maluku Tengah" class="logo" />
       </div>
       <h1>SMK Negeri 1 Maluku Tengah</h1>
       <p class="sub">Pengumuman Kelulusan — T.P. 2025 / 2026</p>
