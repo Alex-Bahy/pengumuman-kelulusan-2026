@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pengumuman Kelulusan — SMK Negeri 1 Maluku Tengah</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-deep: #060a18;
+      --bg-mid: #0d1433;
+      --accent: #4a7cff;
+      --accent-soft: rgba(74,124,255,.22);
+      --gold: #f5c842;
+      --green: #2dd4a0;
+      --green-soft: rgba(45,212,160,.18);
+      --red: #f06565;
+      --red-soft: rgba(240,101,101,.18);
+      --glass: rgba(255,255,255,.04);
+      --glass-border: rgba(255,255,255,.08);
+      --text: #dfe6f2;
+      --text-dim: rgba(223,230,242,.48);
+      --radius: 20px;
+      --font: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+      --card-max-w: 430px;
+      --card-pad-x: 1.4rem;
+      --card-pad-y: 1.75rem;
+      --logo-size: 96px;
+      --logo-wrap: 130px;
+      --h1-size: 1.45rem;
+      --sub-size: .82rem;
+      --input-size: .92rem;
+      --btn-size: .88rem;
+      --result-icon: 68px;
+      --result-name: 1.22rem;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      color: var(--text);
+      min-height: 100dvh;
+      overflow-x: hidden;
+      background: var(--bg-deep);
+    }
+
+    /* ── BACKGROUND — Enhanced Multi-Layer Gradient ── */
+    .bg {
+      position: fixed; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 15% 8%, rgba(74,124,255,.18), transparent 55%),
+        radial-gradient(ellipse 60% 40% at 85% 15%, rgba(139,92,246,.14), transparent 50%),
+        radial-gradient(ellipse 80% 55% at 78% 88%, rgba(120,70,220,.13), transparent 60%),
+        radial-gradient(ellipse 50% 35% at 50% 50%, rgba(6,182,212,.07), transparent 50%),
+        radial-gradient(ellipse 90% 60% at 30% 90%, rgba(236,72,153,.08), transparent 55%),
+        linear-gradient(168deg, var(--bg-deep) 0%, #0c1a3d 25%, var(--bg-mid) 50%, #18082e 75%, #120921 100%);
+    }
+    .bg::after {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 34px 34px;
+    }
+
+    /* ── Animated Mesh Gradient Overlay ── */
+    .bg::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        conic-gradient(from 45deg at 25% 30%, transparent 0deg, rgba(74,124,255,.06) 60deg, transparent 120deg),
+        conic-gradient(from 200deg at 75% 70%, transparent 0deg, rgba(139,92,246,.05) 60deg, transparent 120deg);
+      animation: meshShift 20s ease-in-out infinite alternate;
+    }
+    @keyframes meshShift {
+      0%   { opacity: .6; filter: hue-rotate(0deg); }
+      50%  { opacity: 1; filter: hue-rotate(15deg); }
+      100% { opacity: .7; filter: hue-rotate(-10deg); }
+    }
+
+    .orb { position: fixed; border-radius: 50%; filter: blur(100px); opacity: .2; pointer-events: none; z-index: 0; }
+    .orb-1 { width: 420px; height: 420px; background: linear-gradient(135deg, #4a7cff, #06b6d4); top: -8%; left: -10%; animation: drift 24s ease-in-out infinite alternate; }
+    .orb-2 { width: 360px; height: 360px; background: linear-gradient(135deg, #8b5cf6, #ec4899); bottom: -10%; right: -8%; animation: drift 30s ease-in-out infinite alternate-reverse; }
+    .orb-3 { width: 260px; height: 260px; background: linear-gradient(135deg, #06b6d4, #2dd4a0); top: 42%; left: 58%; animation: drift 26s ease-in-out infinite alternate; animation-delay: -9s; }
+    .orb-4 { width: 180px; height: 180px; background: linear-gradient(135deg, #f59e0b, #f5c842); top: 20%; right: 15%; animation: drift 22s ease-in-out infinite alternate-reverse; animation-delay: -5s; opacity: .08; }
+
+    @keyframes drift {
+      0%   { transform: translate(0,0) scale(1); }
+      33%  { transform: translate(20px,-30px) scale(1.06); }
+      66%  { transform: translate(-15px,20px) scale(.97); }
+      100% { transform: translate(-18px,14px) scale(.96); }
+    }
+
+    /* ── LAYOUT ── */
+    .wrapper {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      min-height: 100dvh;
+      padding: 2rem 1rem;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      text-align: center;
+      margin-bottom: 1.6rem;
+      animation: fadeUp .7s ease-out both;
+    }
+
+    /* ── LOGO — Fixed: No Clipping ── */
+    .logo-wrap {
+      position: relative;
+      display: inline-flex; align-items: center; justify-content: center;
+      width: var(--logo-wrap); height: var(--logo-wrap);
+      margin-bottom: .7rem;
+    }
+
+    /* Outer glow ring */
+    .logo-wrap::before {
+      content: ''; position: absolute;
+      width: calc(var(--logo-wrap) + 36px);
+      height: calc(var(--logo-wrap) + 36px);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(74,124,255,.15), rgba(139,92,246,.08) 50%, transparent 70%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    /* Inner ring border */
+    .logo-wrap::after {
+      content: ''; position: absolute;
+      width: calc(var(--logo-wrap) + 8px);
+      height: calc(var(--logo-wrap) + 8px);
+      border-radius: 50%;
+      border: 1.5px solid rgba(74,124,255,.15);
+      animation: pulse 4s ease-in-out infinite;
+      animation-delay: -2s;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(.85); opacity: .35; }
+      50%      { transform: scale(1.12); opacity: .65; }
+    }
+
+    .logo {
+      position: relative;
+      width: var(--logo-size);
+      height: var(--logo-size);
+      object-fit: contain;
+      /* KEY FIX: prevent any clipping with padding inside the container */
+      border-radius: 50%;
+      filter: drop-shadow(0 0 20px rgba(74,124,255,.25));
+      /* Ensure the image is never clipped */
+      overflow: visible;
+      flex-shrink: 0;
+    }
+
+    .header h1 {
+      font-size: var(--h1-size);
+      font-weight: 800; letter-spacing: -.01em; line-height: 1.3;
+      background: linear-gradient(135deg, #ffffff 0%, #c7d7ff 40%, var(--accent) 80%, #8b5cf6 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .header .sub {
+      font-size: var(--sub-size);
+      color: var(--text-dim); margin-top: .25rem;
+      font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+      background: linear-gradient(90deg, rgba(223,230,242,.4), rgba(223,230,242,.6), rgba(223,230,242,.4));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── CARD — Enhanced Glass with Gradient Border ── */
+    .card {
+      width: 100%;
+      max-width: var(--card-max-w);
+      position: relative;
+      background: linear-gradient(145deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 50%, rgba(139,92,246,.04) 100%);
+      backdrop-filter: blur(24px) saturate(1.4);
+      -webkit-backdrop-filter: blur(24px) saturate(1.4);
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      padding: var(--card-pad-y) var(--card-pad-x);
+      box-shadow:
+        0 8px 36px rgba(0,0,0,.32),
+        0 0 0 1px rgba(255,255,255,.06),
+        inset 0 1px 0 rgba(255,255,255,.07),
+        inset 0 -1px 0 rgba(0,0,0,.1);
+      animation: fadeUp .7s .1s ease-out both;
+      background-clip: padding-box;
+    }
+
+    /* Gradient border effect */
+    .card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: calc(var(--radius) + 1px);
+      background: linear-gradient(135deg, rgba(74,124,255,.25), rgba(139,92,246,.15), rgba(6,182,212,.1), rgba(74,124,255,.08));
+      z-index: -1;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: xor;
+      -webkit-mask-composite: xor;
+      padding: 1px;
+    }
+
+    /* Subtle top shine */
+    .card::after {
+      content: ''; position: absolute;
+      top: 0; left: 10%; right: 10%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+      border-radius: 50%;
+    }
+
+    /* ── VIEWS ── */
+    .view { display: none; }
+    .view.active { display: block; animation: fadeUp .35s ease-out; }
+
+    /* ── COUNTDOWN ── */
+    .cd { text-align: center; }
+    .cd-label { font-size: .82rem; color: var(--text-dim); margin-bottom: .5rem; font-weight: 500; }
+
+    .cd-date {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(245,200,66,.12), rgba(245,200,66,.06));
+      border: 1px solid rgba(245,200,66,.22);
+      color: var(--gold);
+      font-size: .76rem;
+      font-weight: 700;
+      padding: .3rem .8rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+      letter-spacing: .03em;
+    }
+
+    .cd-grid { display: flex; justify-content: center; gap: .6rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .cd-unit {
+      display: flex; flex-direction: column; align-items: center;
+      background: linear-gradient(145deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 14px; padding: .65rem .75rem; min-width: 64px;
+      transition: border-color .3s, box-shadow .3s;
+    }
+    .cd-unit.tick {
+      border-color: rgba(245,200,66,.35);
+      box-shadow: 0 0 12px rgba(245,200,66,.08);
+    }
+    .cd-unit .n {
+      font-size: 1.6rem; font-weight: 800; line-height: 1.2;
+      background: linear-gradient(135deg, var(--gold) 20%, #fde68a 60%, #fbbf24);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      transition: transform .15s;
+    }
+    .cd-unit.tick .n {
+      transform: scale(1.08);
+    }
+    .cd-unit .l {
+      font-size: .58rem; color: var(--text-dim);
+      text-transform: uppercase; letter-spacing: .08em; margin-top: .1rem;
+    }
+    .cd-note { font-size: .72rem; color: var(--gold); opacity: .7; }
+
+    .cd-pulse {
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-right: .4rem;
+      vertical-align: middle;
+      animation: dotPulse 1s ease-in-out infinite;
+    }
+    @keyframes dotPulse {
+      0%, 100% { opacity: .3; transform: scale(.8); }
+      50%      { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* ── FORM ── */
+    .form-label {
+      display: block; font-size: .78rem; font-weight: 700;
+      color: var(--text-dim); margin-bottom: .5rem;
+      text-transform: uppercase; letter-spacing: .06em;
+    }
+    .inp-wrap { position: relative; margin-bottom: 1rem; }
+    .inp-wrap svg {
+      position: absolute; left: .85rem; top: 50%; transform: translateY(-50%);
+      color: var(--text-dim); pointer-events: none; width: 18px; height: 18px;
+    }
+    .inp-wrap input {
+      width: 100%; padding: .82rem 1rem .82rem 2.7rem;
+      background: rgba(255,255,255,.04); border: 1.5px solid rgba(255,255,255,.1);
+      border-radius: 12px; color: #fff;
+      font-family: var(--font); font-size: var(--input-size); font-weight: 600; outline: none;
+      transition: border .25s, box-shadow .25s, background .25s;
+    }
+    .inp-wrap input::placeholder { color: rgba(255,255,255,.2); font-weight: 400; }
+    .inp-wrap input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft), 0 0 20px rgba(74,124,255,.1);
+      background: rgba(255,255,255,.06);
+    }
+
+    .btn {
+      width: 100%; padding: .82rem; border: none; border-radius: 12px;
+      font-family: var(--font); font-size: var(--btn-size); font-weight: 700;
+      cursor: pointer; text-transform: uppercase; letter-spacing: .05em;
+      transition: transform .18s, box-shadow .18s, opacity .18s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #4a7cff 0%, #6366f1 50%, #8b5cf6 100%);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(74,124,255,.3), 0 1px 0 rgba(255,255,255,.1) inset;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.15), transparent 50%);
+      pointer-events: none;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(74,124,255,.35); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+
+    .btn-ghost {
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); color: var(--text);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.09); }
+
+    .spin {
+      display: inline-block; width: 15px; height: 15px;
+      border: 2.5px solid rgba(255,255,255,.3); border-top-color: #fff;
+      border-radius: 50%; animation: spin .6s linear infinite;
+      vertical-align: middle; margin-right: .35rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .toast {
+      margin-top: .7rem; padding: .55rem .85rem; border-radius: 10px;
+      font-size: .78rem; text-align: center; display: none;
+      animation: fadeUp .2s ease-out; line-height: 1.5;
+    }
+    .toast.show { display: block; }
+    .toast-err { background: var(--red-soft); border: 1px solid rgba(240,101,101,.22); color: #fca5a5; }
+    .toast-ok  { background: var(--accent-soft); border: 1px solid rgba(74,124,255,.22); color: #93b4ff; }
+
+    /* ── RESULT ── */
+    .ri {
+      width: var(--result-icon); height: var(--result-icon); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto .85rem; font-size: 1.85rem;
+      animation: pop .45s cubic-bezier(.175,.885,.32,1.275);
+    }
+    .ri.ok  { background: var(--green-soft); border: 2px solid rgba(45,212,160,.32); box-shadow: 0 0 26px var(--green-soft); }
+    .ri.no  { background: var(--red-soft); border: 2px solid rgba(240,101,101,.32); box-shadow: 0 0 26px var(--red-soft); }
+    @keyframes pop { 0% { transform: scale(0) rotate(-15deg); opacity: 0; } 100% { transform: scale(1) rotate(0); opacity: 1; } }
+
+    .rn { font-size: var(--result-name); font-weight: 800; text-align: center; margin-bottom: .15rem; }
+    .rnis { font-size: .76rem; color: var(--text-dim); text-align: center; margin-bottom: .2rem; }
+
+    .rprodi { text-align: center; margin-bottom: .85rem; }
+    .rprodi span {
+      display: inline-block;
+      background: var(--accent-soft); border: 1px solid rgba(74,124,255,.2);
+      padding: .25rem .75rem; border-radius: 50px;
+      font-size: .72rem; font-weight: 600; color: var(--accent);
+    }
+
+    .rb {
+      display: block; width: fit-content; margin: 0 auto .9rem;
+      padding: .45rem 1.4rem; border-radius: 50px;
+      font-size: .84rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+    }
+    .rb.ok  { background: var(--green-soft); border: 1px solid rgba(45,212,160,.32); color: var(--green); box-shadow: 0 0 20px var(--green-soft); }
+    .rb.no  { background: var(--red-soft); border: 1px solid rgba(240,101,101,.32); color: var(--red); box-shadow: 0 0 20px var(--red-soft); }
+
+    .rmsg { font-size: .78rem; color: var(--text-dim); text-align: center; line-height: 1.6; margin-bottom: .65rem; }
+
+    .info-box {
+      background: rgba(45,212,160,.07); border: 1px solid rgba(45,212,160,.16);
+      border-radius: 12px; padding: .75rem .9rem; margin-bottom: 1.15rem;
+      animation: fadeUp .4s .15s ease-out both;
+    }
+    .info-box .info-title {
+      font-size: .74rem; font-weight: 700; color: var(--green);
+      margin-bottom: .4rem; display: flex; align-items: center; gap: .35rem;
+    }
+    .info-box .info-title svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .info-box .info-text { font-size: .74rem; color: rgba(223,230,242,.7); line-height: 1.6; }
+    .info-box .info-text strong { color: var(--text); }
+    .info-box.fail { background: rgba(240,101,101,.06); border-color: rgba(240,101,101,.14); }
+    .info-box.fail .info-title { color: var(--red); }
+
+    .footer {
+      position: relative; z-index: 1; text-align: center;
+      padding: 1.2rem 1rem; font-size: .68rem; color: var(--text-dim);
+      animation: fadeUp .7s .2s ease-out both;
+    }
+
+    #cc { position: fixed; inset: 0; z-index: 999; pointer-events: none; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 360px) {
+      :root {
+        --card-max-w: 100%; --card-pad-x: .9rem; --card-pad-y: 1.2rem;
+        --logo-size: 72px; --logo-wrap: 92px; --h1-size: 1.05rem; --sub-size: .68rem;
+        --input-size: .85rem; --btn-size: .82rem; --result-icon: 58px; --result-name: 1.05rem;
+      }
+      .wrapper { padding: 1rem .5rem; }
+      .cd-unit { min-width: 48px; padding: .45rem .5rem; }
+      .cd-unit .n { font-size: 1.2rem; }
+      .cd-grid { gap: .4rem; }
+    }
+
+    @media (min-width: 361px) and (max-width: 480px) {
+      :root { --card-max-w: 100%; --card-pad-x: 1.15rem; --card-pad-y: 1.4rem; --logo-size: 84px; --logo-wrap: 104px; --h1-size: 1.2rem; --sub-size: .74rem; }
+      .wrapper { padding: 1.2rem .65rem; }
+      .cd-unit { min-width: 56px; }
+      .cd-unit .n { font-size: 1.35rem; }
+    }
+
+    @media (min-width: 481px) and (max-width: 640px) {
+      :root { --card-max-w: 440px; --card-pad-x: 1.4rem; --card-pad-y: 1.75rem; --logo-size: 92px; --logo-wrap: 115px; }
+    }
+
+    @media (min-width: 641px) and (max-width: 1024px) {
+      :root {
+        --card-max-w: 480px; --card-pad-x: 1.75rem; --card-pad-y: 2rem;
+        --logo-size: 105px; --logo-wrap: 130px; --h1-size: 1.6rem; --sub-size: .88rem;
+        --input-size: .95rem; --btn-size: .9rem; --result-icon: 74px; --result-name: 1.3rem;
+      }
+      .wrapper { padding: 2.5rem 1.5rem; }
+      .cd-unit { min-width: 72px; padding: .75rem .9rem; }
+      .cd-unit .n { font-size: 1.8rem; }
+      .cd-grid { gap: .75rem; }
+    }
+
+    @media (min-width: 1025px) {
+      :root {
+        --card-max-w: 520px; --card-pad-x: 2.25rem; --card-pad-y: 2.5rem;
+        --logo-size: 110px; --logo-wrap: 140px; --h1-size: 1.75rem; --sub-size: .9rem;
+        --input-size: 1rem; --btn-size: .92rem; --radius: 22px; --result-icon: 78px; --result-name: 1.4rem;
+      }
+      .wrapper { padding: 3rem 2rem; }
+      .header { margin-bottom: 2rem; }
+      .cd-unit { min-width: 80px; padding: .8rem 1rem; }
+      .cd-unit .n { font-size: 1.9rem; }
+      .cd-grid { gap: .85rem; }
+      .inp-wrap input { padding: .9rem 1.1rem .9rem 2.8rem; }
+      .btn { padding: .9rem; }
+      .info-box { padding: .85rem 1rem; }
+      .info-box .info-text { font-size: .78rem; }
+    }
+
+    @media (min-width: 1440px) {
+      :root { --card-max-w: 560px; --card-pad-x: 2.5rem; --card-pad-y: 2.75rem; --logo-size: 120px; --logo-wrap: 150px; --h1-size: 1.85rem; }
+    }
+
+    @media (max-height: 500px) and (orientation: landscape) {
+      .wrapper { padding: 1rem; justify-content: flex-start; }
+      .header { margin-bottom: .8rem; }
+      .logo-wrap { width: 80px; height: 80px; }
+      .logo { width: 64px; height: 64px; }
+      .header h1 { font-size: 1.1rem; }
+      .card { padding: 1rem; }
+    }
+
+    @media print {
+      .bg, .orb, #cc { display: none !important; }
+      body { background: #fff; color: #000; }
+      .card { box-shadow: none; border: 1px solid #ccc; background: #fff; backdrop-filter: none; }
+      .header h1 { -webkit-text-fill-color: #000; background: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="orb orb-4"></div>
+  <canvas id="cc"></canvas>
+
+  <div class="wrapper">
+    <header class="header">
+      <div class="logo-wrap">
+        <img src="https://iili.io/Bgdt9te.md.png" alt="Logo SMK Negeri 1 Maluku Tengah" class="logo" />
+      </div>
+      <h1>SMK Negeri 1 Maluku Tengah</h1>
+      <p class="sub">Pengumuman Kelulusan — T.P. 2025 / 2026</p>
+    </header>
+
+    <div class="card">
+      <!-- COUNTDOWN -->
+      <div class="view cd" id="vCd">
+        <p class="cd-label">Pengumuman akan dibuka dalam</p>
+        <span class="cd-date">📅 6 Mei 2026 — Pukul 19:00 WIT</span>
+        <div class="cd-grid">
+          <div class="cd-unit" id="uD"><span class="n" id="cD">--</span><span class="l">Hari</span></div>
+          <div class="cd-unit" id="uH"><span class="n" id="cH">--</span><span class="l">Jam</span></div>
+          <div class="cd-unit" id="uM"><span class="n" id="cM">--</span><span class="l">Menit</span></div>
+          <div class="cd-unit" id="uS"><span class="n" id="cS">--</span><span class="l">Detik</span></div>
+        </div>
+        <p class="cd-note"><span class="cd-pulse"></span>Waktu Indonesia Timur (WIT / UTC+9)</p>
+      </div>
+
+      <!-- FORM -->
+      <div class="view" id="vFm">
+        <label class="form-label" for="nis">Masukkan NIS atau NISN</label>
+        <div class="inp-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <input type="text" id="nis" placeholder="Contoh: 1521 atau 0083061940" autocomplete="off" inputmode="text" maxlength="30" />
+        </div>
+        <button class="btn btn-primary" id="btnC">Cek Kelulusan</button>
+        <div class="toast toast-err" id="tE"></div>
+        <div class="toast toast-ok" id="tO"></div>
+      </div>
+
+      <!-- RESULT -->
+      <div class="view" id="vRs">
+        <div class="ri" id="rI"></div>
+        <p class="rn" id="rN"></p>
+        <p class="rnis" id="rNs"></p>
+        <p class="rprodi" id="rP"></p>
+        <span class="rb" id="rB"></span>
+        <p class="rmsg" id="rM"></p>
+        <div id="rInfo"></div>
+        <button class="btn btn-ghost" id="btnR">Cek Siswa Lain</button>
+      </div>
+    </div>
+
+    <footer class="footer">&copy; 2026 SMK Negeri 1 Maluku Tengah — Semua hak dilindungi.</footer>
+  </div>
+
+  <script>
+  (function(){
+    'use strict';
+
+    const TARGET_UTC = new Date(Date.UTC(2026, 4, 6, 10, 0, 0));
+
+    const SID = '128KhJ9HlT2lU0vUaDUbs4OHIRWclRJF0uoP-Sd2xZ0A';
+    const DIRECT = [
+      `https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=out:csv&gid=0`,
+      `https://docs.google.com/spreadsheets/d/${SID}/export?format=csv&gid=0`,
+      `https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=out:csv`,
+      `https://docs.google.com/spreadsheets/d/${SID}/pub?gid=0&single=true&output=csv`,
+    ];
+    const PROXY = [
+      `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=out:csv&gid=0`)}`,
+      `https://corsproxy.io/?${encodeURIComponent(`https://docs.google.com/spreadsheets/d/${SID}/export?format=csv&gid=0`)}`,
+      `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(`https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=out:csv&gid=0`)}`,
+    ];
+    const ALL = [...DIRECT, ...PROXY];
+
+    let students = null, tmr = null, tickAudioCtx = null;
+
+    const $ = id => document.getElementById(id);
+    const vCd = $('vCd'), vFm = $('vFm'), vRs = $('vRs');
+    const inp = $('nis'), btnC = $('btnC'), tE = $('tE'), tO = $('tO');
+
+    function show(v) {
+      [vCd, vFm, vRs].forEach(x => x.classList.remove('active'));
+      v.classList.add('active');
+    }
+
+    function isOpen() { return Date.now() >= TARGET_UTC.getTime(); }
+    function getRemaining() { return TARGET_UTC.getTime() - Date.now(); }
+
+    function initTickAudio() {
+      try { tickAudioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(_) { tickAudioCtx = null; }
+    }
+
+    function playTick() {
+      if (!tickAudioCtx) return;
+      try {
+        if (tickAudioCtx.state === 'suspended') tickAudioCtx.resume();
+        const now = tickAudioCtx.currentTime;
+        const osc = tickAudioCtx.createOscillator(), gain = tickAudioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(800, now);
+        osc.frequency.exponentialRampToValueAtTime(600, now + 0.03);
+        gain.gain.setValueAtTime(0.08, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+        osc.connect(gain).connect(tickAudioCtx.destination);
+        osc.start(now); osc.stop(now + 0.06);
+      } catch(_) {}
+    }
+
+    function enableTickOnInteraction() {
+      function handler() {
+        if (!tickAudioCtx) initTickAudio();
+        else if (tickAudioCtx.state === 'suspended') tickAudioCtx.resume();
+        document.removeEventListener('click', handler);
+        document.removeEventListener('touchstart', handler);
+      }
+      document.addEventListener('click', handler);
+      document.addEventListener('touchstart', handler);
+    }
+
+    function startCD() {
+      show(vCd);
+      initTickAudio();
+      enableTickOnInteraction();
+      let lastSec = -1;
+
+      function tick() {
+        let diff = getRemaining();
+        if (diff <= 0) { clearInterval(tmr); openForm(); return; }
+        const d = Math.floor(diff / 86400000); diff %= 86400000;
+        const h = Math.floor(diff / 3600000);  diff %= 3600000;
+        const m = Math.floor(diff / 60000);    diff %= 60000;
+        const s = Math.floor(diff / 1000);
+
+        $('cD').textContent = String(d).padStart(2, '0');
+        $('cH').textContent = String(h).padStart(2, '0');
+        $('cM').textContent = String(m).padStart(2, '0');
+        $('cS').textContent = String(s).padStart(2, '0');
+
+        if (s !== lastSec) {
+          lastSec = s;
+          const uS = $('uS');
+          uS.classList.add('tick');
+          setTimeout(() => uS.classList.remove('tick'), 200);
+          playTick();
+        }
+      }
+      tick();
+      tmr = setInterval(tick, 250);
+    }
+
+    function openForm() { show(vFm); inp.focus(); prefetch(); }
+
+    function isCSV(t) {
+      if (!t || t.length < 10) return false;
+      const s = t.trimStart();
+      if (s.startsWith('<!') || s.startsWith('<html') || s.startsWith('<HTML')) return false;
+      return t.includes(',') && t.includes('\n');
+    }
+
+    async function fetchCSV() {
+      let lastErr;
+      for (const url of ALL) {
+        try {
+          const ac = new AbortController();
+          const to = setTimeout(() => ac.abort(), 8000);
+          const r = await fetch(url, { redirect:'follow', signal:ac.signal });
+          clearTimeout(to);
+          if (!r.ok) continue;
+          const t = await r.text();
+          if (isCSV(t)) return t;
+        } catch(e) { lastErr = e; }
+      }
+      throw new Error('Tidak dapat mengambil data dari Google Sheets.\nPastikan spreadsheet sudah di-Publish to web:\nFile → Share → Publish to web → CSV → Publish');
+    }
+
+    async function loadData() {
+      if (students) return students;
+      const csv = await fetchCSV();
+      students = parse(csv);
+      if (!students.length) throw new Error('Data kosong atau format kolom tidak dikenali.');
+      return students;
+    }
+
+    async function prefetch() { try { await loadData(); } catch(_) {} }
+
+    function parse(raw) {
+      const lines = raw.split(/\r?\n/).filter(l => l.trim());
+      if (lines.length < 2) return [];
+      const hdr = splitL(lines[0]).map(h => strip(h).toLowerCase());
+      const iN = hdr.findIndex(h => h.includes('nis'));
+      const iA = hdr.findIndex(h => h.includes('nama'));
+      const iS = hdr.findIndex(h => h.includes('status'));
+      let iP = hdr.findIndex(h =>
+        h.includes('keterangan') || h.includes('ket') || h.includes('program') ||
+        h.includes('keahlian') || h.includes('jurusan') || h.includes('prodi') || h.includes('kompetensi')
+      );
+      if (iP === -1 && hdr.length >= 5) iP = 4;
+      if (iN === -1 || iA === -1 || iS === -1) throw new Error('Kolom NIS, Nama, atau Status tidak ditemukan.');
+
+      const out = [];
+      for (let i = 1; i < lines.length; i++) {
+        const c = splitL(lines[i]);
+        const nisRaw = strip(c[iN] || '');
+        if (!nisRaw) continue;
+        let nisShort = nisRaw, nisLong = nisRaw;
+        if (nisRaw.includes('/')) {
+          const parts = nisRaw.split('/').map(s => s.trim());
+          nisShort = parts[0] || nisRaw;
+          nisLong  = parts[1] || nisRaw;
+        }
+        out.push({ nisRaw, nisShort, nisLong, nama: strip(c[iA]||''), status: strip(c[iS]||''), program: iP !== -1 ? strip(c[iP]||'') : '' });
+      }
+      return out;
+    }
+
+    function splitL(line) {
+      const r = []; let c = '', q = false;
+      for (let i = 0; i < line.length; i++) {
+        const ch = line[i];
+        if (ch === '"') { if (q && line[i+1] === '"') { c += '"'; i++; } else q = !q; }
+        else if (ch === ',' && !q) { r.push(c); c = ''; }
+        else c += ch;
+      }
+      r.push(c); return r;
+    }
+
+    function strip(s) { return s.replace(/^["'\s]+|["'\s]+$/g, '').trim(); }
+
+    function find(q) {
+      if (!students) return null;
+      const v = q.trim();
+      return students.find(s =>
+        s.nisShort === v || s.nisLong === v || s.nisRaw === v ||
+        s.nisRaw.replace(/\s/g,'') === v.replace(/\s/g,'')
+      ) || null;
+    }
+
+    async function check() {
+      hideT();
+      const v = inp.value.trim();
+      if (!v) { toast('err','Silakan masukkan NIS atau NISN.'); return; }
+      btnC.disabled = true;
+      btnC.innerHTML = '<span class="spin"></span>Memproses…';
+      try {
+        await loadData();
+        const s = find(v);
+        if (!s) { toast('err','NIS / NISN tidak ditemukan. Periksa kembali nomor Anda.'); resetBtn(); return; }
+        showResult(s);
+      } catch(e) { toast('err', e.message||'Terjadi kesalahan.'); resetBtn(); }
+    }
+
+    function showResult(s) {
+      const ok = s.status.toLowerCase().includes('lulus') && !s.status.toLowerCase().includes('tidak');
+      show(vRs);
+      const icon = $('rI');
+      icon.className = 'ri ' + (ok ? 'ok' : 'no');
+      icon.textContent = ok ? '🎓' : '📋';
+      $('rN').textContent = s.nama;
+      $('rNs').textContent = 'NIS: ' + s.nisRaw;
+      const prodiEl = $('rP');
+      if (s.program) { prodiEl.innerHTML = '<span>📚 ' + esc(s.program) + '</span>'; prodiEl.style.display = 'block'; }
+      else { prodiEl.style.display = 'none'; }
+      const badge = $('rB');
+      badge.className = 'rb ' + (ok ? 'ok' : 'no');
+      badge.textContent = ok ? '✓  LULUS' : '✗  TIDAK LULUS';
+      $('rM').textContent = ok
+        ? 'Selamat! Anda dinyatakan LULUS dari SMK Negeri 1 Maluku Tengah.'
+        : 'Mohon maaf, Anda belum dinyatakan lulus. Silakan hubungi pihak sekolah untuk informasi lebih lanjut.';
+
+      const info = $('rInfo');
+      if (ok) {
+        info.innerHTML = `
+          <div class="info-box">
+            <div class="info-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              Langkah Selanjutnya
+            </div>
+            <div class="info-text">
+              Silakan segera menghubungi <strong>Ketua Program Keahlian</strong> atau <strong>Wali Kelas</strong> masing-masing untuk proses pencetakan:<br><br>
+              📄 <strong>Surat Keterangan Lulus (SKL)</strong><br>
+              📊 <strong>Transkrip Nilai</strong><br><br>
+              Harap membawa kartu pelajar atau identitas diri saat pengambilan dokumen.
+            </div>
+          </div>`;
+      } else {
+        info.innerHTML = `
+          <div class="info-box fail">
+            <div class="info-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              Informasi
+            </div>
+            <div class="info-text">
+              Untuk informasi lebih lanjut, silakan menghubungi <strong>Wali Kelas</strong> atau datang langsung ke sekolah pada jam kerja.
+            </div>
+          </div>`;
+      }
+      if (ok) { confetti(); chime(); } else { low(); }
+      try { localStorage.setItem('smkn1mt', JSON.stringify({ q: s.nisShort })); } catch(_) {}
+    }
+
+    function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+    function reset() { resetBtn(); inp.value = ''; hideT(); show(vFm); inp.focus(); }
+    function resetBtn() { btnC.disabled = false; btnC.textContent = 'Cek Kelulusan'; }
+    function toast(type, msg) { hideT(); const el = type === 'err' ? tE : tO; el.textContent = msg; el.classList.add('show'); }
+    function hideT() { tE.classList.remove('show'); tO.classList.remove('show'); }
+
+    function confetti() {
+      const c = $('cc'), ctx = c.getContext('2d');
+      c.width = innerWidth; c.height = innerHeight;
+      const cols = ['#4a7cff','#2dd4a0','#f5c842','#f06565','#8b5cf6','#06b6d4','#f59e0b','#ec4899'];
+      const P = Array.from({length:150}, () => ({
+        x: Math.random()*c.width, y: Math.random()*-c.height,
+        w: 4+Math.random()*7, h: 2+Math.random()*5,
+        col: cols[~~(Math.random()*cols.length)],
+        vx: (Math.random()-.5)*3.5, vy: 2+Math.random()*3.5,
+        rot: Math.random()*360, rs: (Math.random()-.5)*9, o: 1
+      }));
+      let f = 0;
+      (function draw() {
+        ctx.clearRect(0,0,c.width,c.height); let alive = false;
+        for (const p of P) {
+          p.x += p.vx; p.vy += .035; p.y += p.vy; p.rot += p.rs;
+          if (f > 140) p.o -= .012;
+          if (p.o > 0 && p.y < c.height+50) {
+            alive = true; ctx.save(); ctx.globalAlpha = Math.max(0,p.o);
+            ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180);
+            ctx.fillStyle = p.col; ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
+            ctx.restore();
+          }
+        }
+        f++;
+        if (alive && f < 280) requestAnimationFrame(draw);
+        else ctx.clearRect(0,0,c.width,c.height);
+      })();
+    }
+
+    function chime() {
+      try {
+        const a = new (AudioContext||webkitAudioContext)();
+        [523.25,659.25,783.99,1046.5].forEach((fr,i) => {
+          const o = a.createOscillator(), g = a.createGain();
+          o.type = 'sine'; o.frequency.value = fr;
+          g.gain.setValueAtTime(.1,a.currentTime+i*.12);
+          g.gain.exponentialRampToValueAtTime(.001,a.currentTime+i*.12+.45);
+          o.connect(g).connect(a.destination);
+          o.start(a.currentTime+i*.12); o.stop(a.currentTime+i*.12+.45);
+        });
+      } catch(_) {}
+    }
+
+    function low() {
+      try {
+        const a = new (AudioContext||webkitAudioContext)();
+        const o = a.createOscillator(), g = a.createGain();
+        o.type='sine'; o.frequency.setValueAtTime(310,a.currentTime);
+        o.frequency.linearRampToValueAtTime(200,a.currentTime+.35);
+        g.gain.setValueAtTime(.08,a.currentTime);
+        g.gain.exponentialRampToValueAtTime(.001,a.currentTime+.4);
+        o.connect(g).connect(a.destination); o.start(); o.stop(a.currentTime+.4);
+      } catch(_) {}
+    }
+
+    btnC.addEventListener('click', check);
+    $('btnR').addEventListener('click', reset);
+    inp.addEventListener('keydown', e => { if (e.key === 'Enter') check(); });
+
+    if (isOpen()) {
+      openForm();
+      try { const l = JSON.parse(localStorage.getItem('smkn1mt')); if (l?.q) inp.value = l.q; } catch(_) {}
+    } else {
+      startCD();
+    }
+  })();
+  </script>
+</body>
+</html>
