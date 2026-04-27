@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preload" href="https://iili.io/Bgdt9te.png" as="image" type="image/png" crossorigin="anonymous" />
 
   <style>
     :root {
@@ -102,22 +103,23 @@
       text-align: center;
       margin-bottom: 1.6rem;
       animation: fadeUp .7s ease-out both;
+      overflow: visible;  /* allow logo glow to extend */
     }
 
     .logo-wrap {
       position: relative;
       display: inline-flex; align-items: center; justify-content: center;
-      /* Use logo-size for the flex container; glow lives outside via overflow:visible */
       width: var(--logo-size); height: var(--logo-size);
       margin-bottom: .7rem;
-      overflow: visible;          /* KEY: let glow rings expand beyond */
-      z-index: 1;                 /* establish stacking context */
+      overflow: visible;
+      z-index: 1;
+      /* Prevent any implicit clipping from parent backdrop-filter */
+      isolation: isolate;
     }
 
-    /* Outer glow ring — positioned from center, never clips */
+    /* Outer glow ring */
     .logo-wrap::before {
       content: ''; position: absolute;
-      /* size relative to logo so it always surrounds it proportionally */
       width: calc(var(--logo-size) + 52px);
       height: calc(var(--logo-size) + 52px);
       left: 50%; top: 50%;
@@ -129,7 +131,7 @@
       z-index: -1;
     }
 
-    /* Inner ring border — also centered */
+    /* Inner ring border */
     .logo-wrap::after {
       content: ''; position: absolute;
       width: calc(var(--logo-size) + 16px);
@@ -153,12 +155,19 @@
       display: block;
       width: var(--logo-size);
       height: var(--logo-size);
-      object-fit: contain;        /* preserve aspect ratio, never crop */
-      /* NO border-radius: 50% — this was clipping non-circular logos */
-      border-radius: 0;
+      max-width: var(--logo-size);
+      max-height: var(--logo-size);
+      object-fit: contain;
+      object-position: center center;
+      border-radius: 0 !important;        /* NEVER clip to circle */
+      -webkit-border-radius: 0 !important;
+      clip-path: none !important;          /* Prevent any inherited clip */
+      -webkit-clip-path: none !important;
+      mask: none !important;               /* Prevent any inherited mask */
+      -webkit-mask: none !important;
+      overflow: visible;
       filter: drop-shadow(0 0 20px rgba(74,124,255,.25));
       flex-shrink: 0;
-      /* Fallback: if image fails, keep space */
       background: transparent;
     }
 
@@ -484,7 +493,18 @@
   <div class="wrapper">
     <header class="header">
       <div class="logo-wrap">
-        <img src="https://iili.io/Bgdt9te.md.png" alt="Logo SMK Negeri 1 Maluku Tengah" class="logo" />
+        <!-- Full-size image (no .md thumbnail suffix) with fallback -->
+        <img
+          src="https://iili.io/Bgdt9te.png"
+          onerror="this.onerror=null;this.src='https://iili.io/Bgdt9te.md.png';"
+          alt="Logo SMK Negeri 1 Maluku Tengah"
+          class="logo"
+          crossorigin="anonymous"
+          loading="eager"
+          decoding="async"
+          width="96"
+          height="96"
+        />
       </div>
       <h1>SMK Negeri 1 Maluku Tengah</h1>
       <p class="sub">Pengumuman Kelulusan — T.P. 2025 / 2026</p>
