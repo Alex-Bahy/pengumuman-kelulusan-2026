@@ -28,8 +28,8 @@
       --card-max-w: 430px;
       --card-pad-x: 1.4rem;
       --card-pad-y: 1.75rem;
-      --logo-size: 64px;
-      --logo-wrap: 80px;
+      --logo-size: 96px;
+      --logo-wrap: 130px;
       --h1-size: 1.45rem;
       --sub-size: .82rem;
       --input-size: .92rem;
@@ -49,7 +49,6 @@
       background: var(--bg-deep);
     }
 
-    /* ── BACKGROUND — Enhanced Multi-Layer Gradient ── */
     .bg {
       position: fixed; inset: 0; z-index: 0;
       background:
@@ -66,7 +65,6 @@
       background-size: 34px 34px;
     }
 
-    /* ── Animated Mesh Gradient Overlay ── */
     .bg::before {
       content: ''; position: absolute; inset: 0;
       background:
@@ -93,7 +91,6 @@
       100% { transform: translate(-18px,14px) scale(.96); }
     }
 
-    /* ── LAYOUT ── */
     .wrapper {
       position: relative; z-index: 1;
       display: flex; flex-direction: column;
@@ -102,38 +99,32 @@
       padding: 2rem 1rem;
     }
 
-    /* ── HEADER ── */
     .header {
       text-align: center;
       margin-bottom: 1.6rem;
       animation: fadeUp .7s ease-out both;
-      overflow: visible;
     }
 
-    /* ── LOGO — Fixed: No Clipping ── */
     .logo-wrap {
       position: relative;
       display: inline-flex; align-items: center; justify-content: center;
       width: var(--logo-wrap); height: var(--logo-wrap);
       margin-bottom: .7rem;
-      overflow: visible;
     }
 
-    /* Outer glow ring */
     .logo-wrap::before {
       content: ''; position: absolute;
-      width: calc(var(--logo-wrap) + 24px);
-      height: calc(var(--logo-wrap) + 24px);
+      width: calc(var(--logo-wrap) + 36px);
+      height: calc(var(--logo-wrap) + 36px);
       border-radius: 50%;
       background: radial-gradient(circle, rgba(74,124,255,.15), rgba(139,92,246,.08) 50%, transparent 70%);
       animation: pulse 4s ease-in-out infinite;
     }
 
-    /* Inner ring border */
     .logo-wrap::after {
       content: ''; position: absolute;
-      width: calc(var(--logo-wrap) + 6px);
-      height: calc(var(--logo-wrap) + 6px);
+      width: calc(var(--logo-wrap) + 8px);
+      height: calc(var(--logo-wrap) + 8px);
       border-radius: 50%;
       border: 1.5px solid rgba(74,124,255,.15);
       animation: pulse 4s ease-in-out infinite;
@@ -150,12 +141,10 @@
       width: var(--logo-size);
       height: var(--logo-size);
       object-fit: contain;
-      object-position: center;
-      border-radius: 0;
-      filter: drop-shadow(0 0 16px rgba(74,124,255,.2));
+      border-radius: 50%;
+      filter: drop-shadow(0 0 20px rgba(74,124,255,.25));
       overflow: visible;
       flex-shrink: 0;
-      max-width: 100%;
     }
 
     .header h1 {
@@ -174,7 +163,6 @@
       background-clip: text;
     }
 
-    /* ── CARD — Enhanced Glass with Gradient Border ── */
     .card {
       width: 100%;
       max-width: var(--card-max-w);
@@ -194,7 +182,6 @@
       background-clip: padding-box;
     }
 
-    /* Gradient border effect */
     .card::before {
       content: ''; position: absolute; inset: -1px;
       border-radius: calc(var(--radius) + 1px);
@@ -207,7 +194,6 @@
       padding: 1px;
     }
 
-    /* Subtle top shine */
     .card::after {
       content: ''; position: absolute;
       top: 0; left: 10%; right: 10%; height: 1px;
@@ -215,11 +201,9 @@
       border-radius: 50%;
     }
 
-    /* ── VIEWS ── */
     .view { display: none; }
     .view.active { display: block; animation: fadeUp .35s ease-out; }
 
-    /* ── COUNTDOWN ── */
     .cd { text-align: center; }
     .cd-label { font-size: .82rem; color: var(--text-dim); margin-bottom: .5rem; font-weight: 500; }
 
@@ -277,7 +261,6 @@
       50%      { opacity: 1; transform: scale(1.2); }
     }
 
-    /* ── FORM ── */
     .form-label {
       display: block; font-size: .78rem; font-weight: 700;
       color: var(--text-dim); margin-bottom: .5rem;
@@ -346,7 +329,6 @@
     .toast-err { background: var(--red-soft); border: 1px solid rgba(240,101,101,.22); color: #fca5a5; }
     .toast-ok  { background: var(--accent-soft); border: 1px solid rgba(74,124,255,.22); color: #93b4ff; }
 
-    /* ── RESULT ── */
     .ri {
       width: var(--result-icon); height: var(--result-icon); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
@@ -403,11 +385,10 @@
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 360px) {
       :root {
         --card-max-w: 100%; --card-pad-x: .9rem; --card-pad-y: 1.2rem;
-        --logo-size: 48px; --logo-wrap: 62px; --h1-size: 1.05rem; --sub-size: .68rem;
+        --logo-size: 72px; --logo-wrap: 92px; --h1-size: 1.05rem; --sub-size: .68rem;
         --input-size: .85rem; --btn-size: .82rem; --result-icon: 58px; --result-name: 1.05rem;
       }
       .wrapper { padding: 1rem .5rem; }
@@ -417,20 +398,20 @@
     }
 
     @media (min-width: 361px) and (max-width: 480px) {
-      :root { --card-max-w: 100%; --card-pad-x: 1.15rem; --card-pad-y: 1.4rem; --logo-size: 56px; --logo-wrap: 70px; --h1-size: 1.2rem; --sub-size: .74rem; }
+      :root { --card-max-w: 100%; --card-pad-x: 1.15rem; --card-pad-y: 1.4rem; --logo-size: 84px; --logo-wrap: 104px; --h1-size: 1.2rem; --sub-size: .74rem; }
       .wrapper { padding: 1.2rem .65rem; }
       .cd-unit { min-width: 56px; }
       .cd-unit .n { font-size: 1.35rem; }
     }
 
     @media (min-width: 481px) and (max-width: 640px) {
-      :root { --card-max-w: 440px; --card-pad-x: 1.4rem; --card-pad-y: 1.75rem; --logo-size: 64px; --logo-wrap: 80px; }
+      :root { --card-max-w: 440px; --card-pad-x: 1.4rem; --card-pad-y: 1.75rem; --logo-size: 92px; --logo-wrap: 115px; }
     }
 
     @media (min-width: 641px) and (max-width: 1024px) {
       :root {
         --card-max-w: 480px; --card-pad-x: 1.75rem; --card-pad-y: 2rem;
-        --logo-size: 72px; --logo-wrap: 90px; --h1-size: 1.6rem; --sub-size: .88rem;
+        --logo-size: 105px; --logo-wrap: 130px; --h1-size: 1.6rem; --sub-size: .88rem;
         --input-size: .95rem; --btn-size: .9rem; --result-icon: 74px; --result-name: 1.3rem;
       }
       .wrapper { padding: 2.5rem 1.5rem; }
@@ -442,7 +423,7 @@
     @media (min-width: 1025px) {
       :root {
         --card-max-w: 520px; --card-pad-x: 2.25rem; --card-pad-y: 2.5rem;
-        --logo-size: 78px; --logo-wrap: 96px; --h1-size: 1.75rem; --sub-size: .9rem;
+        --logo-size: 110px; --logo-wrap: 140px; --h1-size: 1.75rem; --sub-size: .9rem;
         --input-size: 1rem; --btn-size: .92rem; --radius: 22px; --result-icon: 78px; --result-name: 1.4rem;
       }
       .wrapper { padding: 3rem 2rem; }
@@ -457,14 +438,14 @@
     }
 
     @media (min-width: 1440px) {
-      :root { --card-max-w: 560px; --card-pad-x: 2.5rem; --card-pad-y: 2.75rem; --logo-size: 84px; --logo-wrap: 104px; --h1-size: 1.85rem; }
+      :root { --card-max-w: 560px; --card-pad-x: 2.5rem; --card-pad-y: 2.75rem; --logo-size: 120px; --logo-wrap: 150px; --h1-size: 1.85rem; }
     }
 
     @media (max-height: 500px) and (orientation: landscape) {
       .wrapper { padding: 1rem; justify-content: flex-start; }
       .header { margin-bottom: .8rem; }
-      .logo-wrap { width: 58px; height: 58px; }
-      .logo { width: 46px; height: 46px; }
+      .logo-wrap { width: 80px; height: 80px; }
+      .logo { width: 64px; height: 64px; }
       .header h1 { font-size: 1.1rem; }
       .card { padding: 1rem; }
     }
@@ -489,7 +470,7 @@
   <div class="wrapper">
     <header class="header">
       <div class="logo-wrap">
-        <img src="https://iili.io/Bgdt9te.png" alt="Logo SMK Negeri 1 Maluku Tengah" class="logo" />
+        <img src="https://iili.io/Bgdt9te.md.png" alt="Logo SMK Negeri 1 Maluku Tengah" class="logo" />
       </div>
       <h1>SMK Negeri 1 Maluku Tengah</h1>
       <p class="sub">Pengumuman Kelulusan — T.P. 2025 / 2026</p>
@@ -499,7 +480,7 @@
       <!-- COUNTDOWN -->
       <div class="view cd" id="vCd">
         <p class="cd-label">Pengumuman akan dibuka dalam</p>
-        <span class="cd-date">📅 6 Mei 2026 — Pukul 19:00 WIT</span>
+        <span class="cd-date">📅 Senin, 4 Mei 2026 — Pukul 20:00 WIT</span>
         <div class="cd-grid">
           <div class="cd-unit" id="uD"><span class="n" id="cD">--</span><span class="l">Hari</span></div>
           <div class="cd-unit" id="uH"><span class="n" id="cH">--</span><span class="l">Jam</span></div>
@@ -541,7 +522,13 @@
   (function(){
     'use strict';
 
-    const TARGET_UTC = new Date(Date.UTC(2026, 4, 6, 10, 0, 0));
+    /* ══════════════════════════════════════════════════════
+       TARGET: Senin, 4 Mei 2026 pukul 20:00 WIT (UTC+9)
+       20:00 WIT = 11:00 UTC
+       Date.UTC(2026, 4, 4, 11, 0, 0)
+       Month is 0-indexed: 4 = Mei
+    ══════════════════════════════════════════════════════ */
+    const TARGET_UTC = new Date(Date.UTC(2026, 4, 4, 11, 0, 0));
 
     const SID = '128KhJ9HlT2lU0vUaDUbs4OHIRWclRJF0uoP-Sd2xZ0A';
     const DIRECT = [
